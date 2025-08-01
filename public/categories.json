@@ -1,0 +1,8 @@
+[
+  { "id": 1, "category": "All" },
+  { "id": 2, "category": "laptop" },
+  { "id": 3, "category": "tab" },
+  { "id": 4, "category": "monitor" },
+  { "id": 5, "category": "mobile" },
+  { "id": 6, "category": "others" }
+]

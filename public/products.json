@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Dell XPS 13",
+    "category": "laptop",
+    "price": 1200,
+    "image": "https://m.media-amazon.com/images/I/710EGJBdIML._AC_SL1500_.jpg",
+    "rating": 4.5,
+    "details": "13.3-inch FHD, Intel i7, 16GB RAM, 512GB SSD"
+  },
+  {
+    "id": 2,
+    "name": "Samsung Galaxy Tab S8",
+    "category": "tab",
+    "price": 750,
+    "image": "https://app-area.riointernational.com.bd/productImages/1734596722w44yz.png",
+    "rating": 4.3,
+    "details": "11-inch LCD, Snapdragon 8 Gen 1, 8GB RAM, 128GB Storage"
+  },
+  {
+    "id": 3,
+    "name": "iPhone 14 Pro",
+    "category": "mobile",
+    "price": 999,
+    "image": "https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111846_sp875-sp876-iphone14-pro-promax.png",
+    "rating": 4.7,
+    "details": "6.1-inch OLED, A16 Bionic, 6GB RAM, 256GB Storage"
+  },
+  {
+    "id": 4,
+    "name": "LG UltraGear Monitor",
+    "category": "monitor",
+    "price": 350,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpYCwYoR6M3t2HD6hhhgQ6h7td8xW5UxrW5Q&s",
+    "rating": 4.4,
+    "details": "27-inch QHD, 144Hz, 1ms, IPS Display"
+  },
+  {
+    "id": 5,
+    "name": "Asus ROG Zephyrus",
+    "category": "laptop",
+    "price": 1500,
+    "image": "https://computermania.com.bd/wp-content/uploads/2025/01/Asus-ROG-Zephyrus-Duo-16-GX650PY-1.webp",
+    "rating": 4.6,
+    "details": "15.6-inch FHD, Ryzen 9, 16GB RAM, RTX 3070"
+  },
+  {
+    "id": 6,
+    "name": "Nothing Phone 2",
+    "category": "mobile",
+    "price": 699,
+    "image": "https://cdn.mos.cms.futurecdn.net/v2/t:0,l:350,cw:2100,ch:1575,q:80,w:2100/Ja75ayrr6ntwmXFfUTjkji.jpg",
+    "rating": 4.2,
+    "details": "6.7-inch OLED, Snapdragon 8+, 12GB RAM, 256GB Storage"
+  },
+  {
+    "id": 7,
+    "name": "Realme Pad X",
+    "category": "tab",
+    "price": 300,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBhxaFjDJY4a44eEgcvs2D44gXw3uxDBooVg&s",
+    "rating": 4.0,
+    "details": "10.95-inch Display, Snapdragon 695, 6GB RAM"
+  },
+  {
+    "id": 8,
+    "name": "Unassigned Product",
+    "category": "",
+    "price": 100,
+    "image": "https://example.com/images/unknown.jpg",
+    "rating": 3.0,
+    "details": "No category assigned yet"
+  }
+]
