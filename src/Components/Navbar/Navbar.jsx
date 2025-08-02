@@ -7,11 +7,17 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink>Home</NavLink>
+        <NavLink
+        >
+          Home
+        </NavLink>
       </li>
       <li>
         <NavLink>Statistics</NavLink>
       </li>
+      {/* className={(isActive) =>
+            `font-bold ${isActive ? "text-warning" : "hover:text-warning"}`
+          } */}
       <li>
         <NavLink>Deshboard</NavLink>
       </li>
@@ -24,7 +30,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div>
+    <div className="">
+      {/* className="fixed bg-white/30 backdrop-blur-2xl z-500" */}
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">

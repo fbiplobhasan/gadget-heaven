@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useLoaderData, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLoaderData,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import CategoryBtn from "../../Components/CategoryBtn/CategoryBtn";
 import Card from "../../Components/Card/Card";
 import Banner from "../../Components/Banner/Banner";
@@ -9,7 +16,7 @@ const Home = () => {
   const allProducts = useLoaderData();
   const { category } = useParams();
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (category) {
@@ -18,7 +25,7 @@ const Home = () => {
       );
       setProducts(filteredByCategory);
     } else {
-      setProducts(allProducts.slice(0,6));
+      setProducts(allProducts.slice(0, 6));
     }
   }, [allProducts, category]);
 
@@ -45,11 +52,14 @@ const Home = () => {
           </div>
         ))}
       </div>
-      <button
-      onClick={() => navigate('/allproducts')}
-      className="flex btn btn-outline btn-success mt-4">
-      View All Cards
-      </button>
+      {products.length < 12 && (
+        <button
+          onClick={() => setProducts(allProducts)}
+          className="flex btn btn-outline btn-success mt-4"
+        >
+          View All Cards
+        </button>
+      )}
     </div>
   );
 };
