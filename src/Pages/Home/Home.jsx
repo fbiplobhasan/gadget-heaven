@@ -1,18 +1,13 @@
 import { useEffect, useState } from "react";
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useLoaderData,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import CategoryBtn from "../../Components/CategoryBtn/CategoryBtn";
 import Card from "../../Components/Card/Card";
 import Banner from "../../Components/Banner/Banner";
 import Heading from "../../Components/Heading/Heading";
+import { useRef } from "react";
 
 const Home = () => {
+  const cardSectionRef = useRef(null);
   const allProducts = useLoaderData();
   const { category } = useParams();
   const [products, setProducts] = useState([]);
@@ -29,37 +24,51 @@ const Home = () => {
     }
   }, [allProducts, category]);
 
+  const handleViewAll = () => {
+    setProducts(allProducts);
+    setTimeout(() => {
+      cardSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100); // 100ms delay to let cards render
+  };
+
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto px-4 py-8 " ref={cardSectionRef}>
       <Banner></Banner>
       <Heading
         title={"This is Heading."}
         subTitle={"This is subTitle."}
       ></Heading>
-      {/* Category Button Section */}
-      <div className="mb-6 flex flex-wrap gap-3 justify-center">
-        <CategoryBtn />
+      <div className="flex flex-col md:flex-row lg:flex-row gap-6">
+        {/* Category Button Section - Left side on large screen */}
+        <div className="lg:w-1/4 md:w-1/3 w-full">
+          <div className="mb-6 flex flex-wrap lg:flex-col gap-3 justify-start">
+            <CategoryBtn />
+          </div>
+        </div>
+
+        {/* Product Card Section - Right side */}
+        <div className="lg:w-3/4 w-full">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+            {products.map((product, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100"
+              >
+                <Card product={product} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Products Card Grid */}
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {products.map((product, idx) => (
-          <div
-            key={idx}
-            className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100"
-          >
-            <Card product={product} />
-          </div>
-        ))}
-      </div>
-      {products.length < 12 && (
-        <button
-          onClick={() => setProducts(allProducts)}
-          className="flex btn btn-outline btn-success mt-4"
-        >
-          View All Cards
-        </button>
-      )}
+      <button
+        className={`flex btn btn-outline btn-success mt-4 ${
+          products.length === allProducts.length ? "hidden" : ""
+        }`}
+        onClick={handleViewAll}
+      >
+        View All Cards
+      </button>
     </div>
   );
 };

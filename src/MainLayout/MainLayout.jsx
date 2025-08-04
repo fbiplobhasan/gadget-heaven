@@ -1,18 +1,21 @@
-import React from "react";
-import Footer from "../Components/Footer/Footer";
-import Navbar from "../Components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import Navbar from "../Components/Navbar/Navbar";
+import Footer from "../Components/Footer/Footer";
 
 const MainLayout = () => {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="container mx-auto">
       {/* Navbar */}
       <Navbar></Navbar>
+      <Toaster />
       <div>
         <Outlet></Outlet>
       </div>
       {/* Footer */}
-      <Footer></Footer>
+      <div className="mt-12">
+        <Footer></Footer>
+      </div>
     </div>
   );
 };
