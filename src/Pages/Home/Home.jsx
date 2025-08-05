@@ -5,6 +5,7 @@ import Card from "../../Components/Card/Card";
 import Banner from "../../Components/Banner/Banner";
 import Heading from "../../Components/Heading/Heading";
 import { useRef } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const cardSectionRef = useRef(null);
@@ -33,6 +34,11 @@ const Home = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 " ref={cardSectionRef}>
+      <Helmet>
+        <title>
+          Gadget Heaven | Home
+        </title>
+      </Helmet>
       <Banner></Banner>
       <Heading
         title={"This is Heading."}

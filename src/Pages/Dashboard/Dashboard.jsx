@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { NavLink, useLocation } from "react-router-dom";
 import dashboardImg from "/images/dashboard-banner.jpg";
 import gsap from "gsap";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const [cartData, setCartData] = useState([]);
@@ -96,6 +97,9 @@ const Dashboard = () => {
 
   return (
     <>
+      <Helmet>
+        <title> Gadget Heaven |Dashboard</title>
+      </Helmet>
       {/* Banner Section */}
       <div className="relative bg-gray-100 rounded-xl overflow-hidden shadow-md p-6 mb-10">
         <img

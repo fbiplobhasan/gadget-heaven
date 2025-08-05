@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { addToCart, addToWishList } from "../../Utils/Utilities";
+import { Helmet } from "react-helmet-async";
 
 const ProductDetails = () => {
   const allProducts = useLoaderData();
@@ -34,6 +35,9 @@ const ProductDetails = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+      <Helmet>
+        <title>Gadget Heaven | {id}</title>
+      </Helmet>
       <div className="bg-white shadow-lg rounded-lg max-w-3xl w-full p-6 md:flex gap-6">
         <div className="md:w-1/2 flex justify-center">
           <img
