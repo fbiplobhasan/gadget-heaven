@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 import { TbJewishStar } from "react-icons/tb";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [wishCount, setWishCount] = useState(0);
+  const { user, signOutUser } = useContext(AuthContext);
 
   const links = (
     <>
@@ -33,18 +36,22 @@ const Navbar = () => {
           Statistics
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "text-blue-500 font-bold underline"
-              : "text-gray-500 hover:text-blue-400"
-          }
-          to="/dashboard"
-        >
-          Dashboard
-        </NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-500 font-bold underline"
+                  : "text-gray-500 hover:text-blue-400"
+              }
+              to="/dashboard"
+            >
+              Dashboard
+            </NavLink>
+          </li>
+        </>
+      )}
       <li>
         <NavLink
           className={({ isActive }) =>
@@ -57,18 +64,22 @@ const Navbar = () => {
           Support
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "text-blue-500 font-bold underline"
-              : "text-gray-500 hover:text-blue-400"
-          }
-          to="/allproducts"
-        >
-          All Products
-        </NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-500 font-bold underline"
+                  : "text-gray-500 hover:text-blue-400"
+              }
+              to="/allproducts"
+            >
+              All Products
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -81,6 +92,15 @@ const Navbar = () => {
     const wishItems = storedWish ? JSON.parse(storedWish) : [];
     setWishCount(wishItems.length);
   }, []);
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        console.log("user signOut successfully");
+        toast.success('Successfully signOut.')
+      })
+      .catch((error) => console.log("ERROR", error.message));
+  };
 
   return (
     <div className="shadow-md bg-violet-700 sticky top-0 z-50">
@@ -142,6 +162,17 @@ const Navbar = () => {
               </span>
             )}
           </button>
+
+          {user ? (
+            <a className="hover:cursor-pointer" onClick={handleSignOut}>
+              SignOut
+            </a>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </>
+          )}
         </div>
       </div>
     </div>

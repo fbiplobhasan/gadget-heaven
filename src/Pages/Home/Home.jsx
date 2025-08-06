@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import CategoryBtn from "../../Components/CategoryBtn/CategoryBtn";
 import Card from "../../Components/Card/Card";
@@ -6,6 +6,7 @@ import Banner from "../../Components/Banner/Banner";
 import Heading from "../../Components/Heading/Heading";
 import { useRef } from "react";
 import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Home = () => {
   const cardSectionRef = useRef(null);
